@@ -9,3 +9,5 @@ class send_to_Grafana
     return responce
   end
 end
+
+send_to_Grafana.new
