@@ -4,7 +4,7 @@ require 'rest-client'
 require 'json'
 
 
-class send_to_Grafana
+class Send_To_Grafana
   def apicall(url='http://10.0.1.81:8086/write?db=mydb', payload)
     puts("Sending API call to #{url}")
     responce = RestClient.post(url, payload)
