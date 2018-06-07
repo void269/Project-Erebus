@@ -5,9 +5,9 @@ require 'json'
 
 
 class Send_To_Grafana
-  def initialize(payload)
+  def initialize()
     @url = 'http://10.0.1.81:8086/write?db=mydb'
-    @payload = payload
+    @payload = ARGV
   end
 
   def apicall(payload)
@@ -21,5 +21,5 @@ class Send_To_Grafana
   end
 end
 
-call = Send_To_Grafana.new(payload)
+call = Send_To_Grafana.new()
 call.apicall(@payload)
