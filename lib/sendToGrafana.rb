@@ -12,5 +12,5 @@ class Send_To_Grafana
   end
 end
 
-call = Send_to_Grafana.new()
+call = Send_To_Grafana.new()
 call.apicall(payload, url)
