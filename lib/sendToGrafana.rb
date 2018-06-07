@@ -11,7 +11,7 @@ class Send_To_Grafana
   end
 
   def apicall(payload)
-    puts("Sending API call to #{url}")
+    puts("Sending API call to #{@url}")
     responce = RestClient.post(@url, @payload)
     return responce
   end
