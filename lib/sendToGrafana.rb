@@ -13,7 +13,7 @@ class Send_To_Grafana
   def apicall(payload)
     puts("Sending API call to #{@url} with payload of #{@payload[0]}")
     responce = RestClient.post(@url, @payload[0])
-    puts(responce)
+    puts("#{responce}")
   end
 
   def failure
