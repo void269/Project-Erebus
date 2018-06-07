@@ -5,7 +5,7 @@ require 'json'
 
 
 class Send_To_Grafana
-  def initialize()
+  def initialize(payload)
     @url = 'http://10.0.1.81:8086/write?db=mydb'
     @payload = payload
   end
