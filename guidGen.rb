@@ -1,4 +1,4 @@
-slavefile  = File.open("./slave")
+slavefile  = File.open("./slave", 'w')
 
 if slavefile
   puts "This is a Slave"
@@ -18,4 +18,6 @@ if slavefile
     puts "This Slave already has a UUID of #{uuid}"
     puts "Nothing to do, exiting"
   end
+else
+  puts "ERROR: Slave file not found!"
 end
