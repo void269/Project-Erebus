@@ -1,8 +1,8 @@
-slavefile  = File.open(./slave)
+slavefile  = File.open("./slave")
 
 if slavefile
   puts "This is a Slave"
-  if File.empty?(./slave)
+  if File.empty?("./slave")
     puts "Generating UUID for first run!"
     require 'securerandom'
     require 'socket'
