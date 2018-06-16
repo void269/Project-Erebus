@@ -9,7 +9,7 @@ if slavefile
 
     ip_addrs = Socket.ip_address_list
     ip_addrs.each do |i|
-      if i.ip_address.exclude?('127') || i.ip_address.exclude?(':')
+      if i.ip_address.to_s.exclude?('127') || i.ip_address.to_s.exclude?(':')
         ip =  i.ip_address
         break
       end
