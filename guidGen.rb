@@ -1,8 +1,8 @@
-slavefile  = File.open("./slave", 'w')
+slavefile  = File.open("/etc/Project-Erebus/slave", 'w')
 
 if slavefile
   puts "This is a Slave"
-  if File.zero?("./slave")
+  if File.zero?("/etc/Project-Erebus/slave")
     puts "Generating UUID for first run!"
     require 'securerandom'
     require 'socket'
