@@ -8,13 +8,9 @@ if slavefile
     require 'socket'
 
     ip_addrs = Socket.ip_address_list
-    ip_addrs.each do |i|
-      puts i.ip_address.to_s
-      if i.ip_address.to_s.exclude?('127') || i.ip_address.to_s.exclude?(':')
-        ip =  i.ip_address
-        break
-      end
-    end
+    allips = ip_addrs.reject {|i| i.ip_address =~ /127/ || i.ip_address =~ /:/}
+    ip = allips[0].ip_address
+
     uuid = SecureRandom.uuid
     slavefile.write("#{uuid},#{ip}")
   else
