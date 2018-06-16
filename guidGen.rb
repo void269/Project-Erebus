@@ -2,7 +2,7 @@ slavefile  = File.open("/etc/Project-Erebus/slave", 'w')
 
 if slavefile
   puts "This is a Slave"
-  if File.zero?("/etc/Project-Erebus/slave")
+  if slavefile.size == 0
     puts "Generating UUID for first run!"
     require 'securerandom'
     require 'socket'
