@@ -2,7 +2,7 @@ slavefile  = File.open("./slave")
 
 if slavefile
   puts "This is a Slave"
-  if slavefile.empty?
+  if File.zero?(slavefile)
     puts "Generating UUID for first run!"
     require 'securerandom'
     require 'socket'
