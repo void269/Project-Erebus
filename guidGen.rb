@@ -2,7 +2,7 @@
 
 if @slavefile
   puts "This is a Slave"
-  puts "file size is: #{slavefile.size}"
+  puts "file size is: #{@slavefile.size}"
   if @slavefile.size == 0
     puts "Generating UUID for first run!"
     require 'securerandom'
