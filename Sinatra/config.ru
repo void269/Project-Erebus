@@ -1,5 +1,5 @@
-masterfile = File.open(./master)
-slavefile  = File.open(./slave)
+masterfile = File.open("/etc/Project-Erebus/master")
+slavefile  = File.open("/etc/Project-Erebus/slave")
 
 if masterfile
   require './runMaster.rb'
