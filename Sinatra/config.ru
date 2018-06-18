@@ -1,7 +1,6 @@
 begin
   masterfile = File.open("/etc/Project-Erebus/master")
-end
-begin
+rescue
   slavefile  = File.open("/etc/Project-Erebus/slave")
 end
 
