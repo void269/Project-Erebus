@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'gatherData'
+require '/etc/Project-Erebus/lib/gatherData.rb'
 
 class MyApp < sinatra::Base
   get '/solarpanel-data' do
