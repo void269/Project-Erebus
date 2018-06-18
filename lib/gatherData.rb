@@ -2,7 +2,7 @@
 
 class Gatherdata
   def getdata_ina219(milliamp_measure)
-    result = exec("python ./return_ina219.py #{milliamp_measure}")
+    result = exec("python /etc/Project-Erebus/return_ina219.py #{milliamp_measure}")
     puts "INA219 return is: #{result}"
   end
 end
