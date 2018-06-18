@@ -13,3 +13,6 @@ end
 
 gather = Gatherdata.new(0.03)
 return gather.getdata_ina219
+
+
+#
