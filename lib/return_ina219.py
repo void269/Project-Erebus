@@ -1,7 +1,7 @@
 from ina219 import INA219
 import sys
 
-measure = long(sys.argv[1])
+measure = float(sys.argv[1])
 
 ina = INA219(shunt_ohms=0.1,
   max_expected_amps = measure,
