@@ -5,9 +5,9 @@ rescue
 end
 
 if masterfile
-  require './runMaster.rb'
+  require './master.rb'
 elsif slavefile
-  require './runSlave.rb'
+  require './slave.rb'
 end
 
 run MyApp.new
