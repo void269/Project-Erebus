@@ -7,4 +7,4 @@ elsif slavefile
   require './runSlave.rb'
 end
 
-run StartApp
+run MyApp
