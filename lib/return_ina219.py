@@ -2,7 +2,7 @@ from ina219 import INA219
 import sys
 
 ina = INA219(shunt_ohms=0.1,
-  max_expected_amps = sys.argv[1],
+  max_expected_amps = 0.03,
   address=0x40)
 
 ina.configure(voltage_range=ina.RANGE_16V,
