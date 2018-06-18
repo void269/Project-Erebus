@@ -8,3 +8,5 @@ class MyApp < sinatra::Base
     "testing"
   end
 end
+
+MyApp.run!
