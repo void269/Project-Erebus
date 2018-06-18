@@ -1,4 +1,3 @@
-require 'sinatra'
+require './master.rb'
 
-while true
-  #run a loop to get data and send to Grafana
+MyApp.run!

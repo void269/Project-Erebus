@@ -7,7 +7,7 @@ end
 if masterfile
   require './runMaster.rb'
 elsif slavefile
-  require '/etc/Project-Erebus/Sinatra/runSlave.rb'
+  require './runSlave.rb'
 end
 
-run MyApp
+run MyApp.new
