@@ -4,7 +4,7 @@ slavefile  = File.open(./slave)
 if masterfile
   require './runMaster.rb'
 elsif slavefile
-  require './runSlave.rb'
+  require '/etc/Project-Erebus/Sinatra/runSlave.rb'
 end
 
 run MyApp
