@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'gatherData.rb'
+require 'gatherData'
 
 get '/solarpanel-data' do
   result = Gatherdata.new
