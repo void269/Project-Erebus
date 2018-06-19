@@ -8,5 +8,3 @@ class MyApp < Sinatra::Base
     'testing'
   end
 end
-
-puts "in the slave file"
