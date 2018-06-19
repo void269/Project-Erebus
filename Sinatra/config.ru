@@ -10,4 +10,4 @@ elsif slavefile
   require './slave.rb'
 end
 
-run MyApp
+run MyApp.new
