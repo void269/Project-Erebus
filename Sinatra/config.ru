@@ -10,4 +10,4 @@ elsif slavefile
   require './slave.rb'
 end
 
-run MyApp.new
+run MyApp.new :bind => '10.0.1.133'
