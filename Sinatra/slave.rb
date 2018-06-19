@@ -1,8 +1,11 @@
-require 'rubygems' if RUBY_VERSION < "1.9"
 require 'sinatra/base'
+require '/etc/Project-Erebus/lib/gatherData.rb'
 
 class MyApp < Sinatra::Base
   get '/' do
-    'Hello World from MyApp in separate file!'
+    result = Gatherdata.new
+    result
   end
 end
+
+puts "in the slave file"
