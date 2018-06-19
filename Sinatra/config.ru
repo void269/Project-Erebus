@@ -10,5 +10,5 @@
 #   require './slave.rb'
 # end
 
-require './slave.rb'
+require '/etc/Project-Erebus/Sinatra/slave.rb'
 run MyApp.new
