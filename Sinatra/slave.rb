@@ -7,3 +7,5 @@ class MyApp < Sinatra::Base
     result
   end
 end
+
+puts "in the slave file"
