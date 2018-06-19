@@ -1,13 +1,14 @@
-begin
-  masterfile = File.open("/etc/Project-Erebus/master")
-rescue
-  slavefile  = File.open("/etc/Project-Erebus/slave")
-end
+# begin
+#   masterfile = File.open("/etc/Project-Erebus/master")
+# rescue
+#   slavefile  = File.open("/etc/Project-Erebus/slave")
+# end
+#
+# if masterfile
+#   require './master.rb'
+# elsif slavefile
+#   require './slave.rb'
+# end
 
-if masterfile
-  require './master.rb'
-elsif slavefile
-  require './slave.rb'
-end
-
+require './slave.rb'
 run MyApp.new
