@@ -12,4 +12,3 @@ class Gatherdata
 end
 
 gather = Gatherdata.new(0.03)
-gather.getdata_ina219
