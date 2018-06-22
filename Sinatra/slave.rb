@@ -6,6 +6,6 @@ class MyApp < Sinatra::Base
   get '/' do
     gather = Gatherdata.new
     result = gather.getdata_ina219
-    puts result
+    result
   end
 end
