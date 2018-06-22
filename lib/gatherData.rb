@@ -6,9 +6,9 @@ class Gatherdata
   end
 
   def getdata_ina219
-    #result = exec("python /etc/Project-Erebus/bin/return_ina219.py 0.03")
-    #puts "INA219 return is: #{result}"
-    #result
-    return "you got the data!"
+    result = exec("python /etc/Project-Erebus/bin/return_ina219.py 0.03")
+    puts "INA219 return is: #{result}"
+    return result
+    #return "you got the data!"
   end
 end
