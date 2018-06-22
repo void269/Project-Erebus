@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require '/etc/Project-Erebus/lib/gatherData'
+require_relative 'gatherData'
 
 class MyApp < Sinatra::Base
   get '/' do
