@@ -1,6 +1,6 @@
 $LOAD_PATH.unshift('/etc/Project-Erebus/lib')
 require 'sinatra/base'
-require_relative 'gatherData.'
+require 'gatherData'
 
 class MyApp < Sinatra::Base
   get '/' do
