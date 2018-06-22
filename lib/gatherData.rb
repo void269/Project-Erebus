@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 class Gatherdata
-  def initialize(milliamp_measure)
-    @milliamp_measure = milliamp_measure
+  def initialize
+    @milliamp_measure = 0.03
   end
 
   def getdata_ina219
@@ -10,5 +10,3 @@ class Gatherdata
     puts "INA219 return is: #{result}"
   end
 end
-
-gather = Gatherdata.new(0.03)
