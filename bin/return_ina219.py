@@ -15,4 +15,4 @@ ina.configure(voltage_range=ina.RANGE_16V,
 v = ina.voltage()
 i = ina.current()
 p = ina.power()
-print (v,i,p)
+print v,i,p
