@@ -2,18 +2,18 @@
   - hosts: all
     task:
       - name: install Ruby
-      apt: name=ruby-dev state=installed
-      apt: name=ruby state=installed
+        apt: name=ruby-dev state=installed
+        apt: name=ruby state=installed
       - name: install dev packages
-      apt: name=zlib1g-dev state=installed
-      apt: name=liblzma-dev state=installed
-      apt: name=libssl-dev state=installed
+        apt: name=zlib1g-dev state=installed
+        apt: name=liblzma-dev state=installed
+        apt: name=libssl-dev state=installed
       - name: install python ina219 package
-      pip: name=pi-ina219
+        pip: name=pi-ina219
       - name: pulling from Github
-      git:
-        repo: https://github.com/void269/Project-Erebus.git
-        dest: /etc
-        clone: yes
-        force: yes
-        update: yes
+        git:
+          repo: https://github.com/void269/Project-Erebus.git
+          dest: /etc
+          clone: yes
+          force: yes
+          update: yes
