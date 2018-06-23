@@ -3,8 +3,8 @@ require 'fileutils'
 
 class App_Logger
   def initialize
-    @logpath = /etc/Project-Erebus/logs
-    @logfilename = runtime.log
+    @logpath = "/etc/Project-Erebus/logs"
+    @logfilename = "runtime.log"
     fileutils.mkdir_p @logpath
     @logfile = File.open("#{@logpath}/#{@logfilename}", "w")
   end
