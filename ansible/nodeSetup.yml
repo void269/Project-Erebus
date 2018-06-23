@@ -12,6 +12,8 @@
       apt: name=liblzma-dev state=installed
     - name: install libssl-dev package
       apt: name=libssl-dev state=installed
+    - name: install Github
+      apt: name=git state=installed
     - name: pulling from Github
       git:
         repo: https://github.com/void269/Project-Erebus.git
