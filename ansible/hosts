@@ -1,3 +1,6 @@
+[defaults]
+host_key_checking = false
+
 [slave]
 10.0.1.133
 10.0.1.131
@@ -12,4 +15,3 @@ master
 [all:vars]
 ansible_connection=ssh
 ansible_ssh_user=root
-host_key_checking = false
