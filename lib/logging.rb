@@ -6,14 +6,12 @@ class App_Logger
     @logpath = /etc/Project-Erebus/logs
     @logfilename = runtime.log
     fileutils.mkdir_p @logpath
-    
+    @logfile = File.open("#{@logpath}/#{@logfilename}", "w")
   end
 
-  def check_logdir
-
-  end
-
-  def check_file
-
+  def main(log_level = "INFO", text = nil, app_name = "Erebus")
+    time = Time.new.utc.strftime('%m-%d-%y %H:%M:%S.%L%L')
+    @logfile.write("\n")
+    @logfile.write("#{time} -> #{log_level.upcase} - [#{app_name}] #{text}")
   end
 end
