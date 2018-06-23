@@ -17,6 +17,7 @@
     - name: pulling from Github
       git:
         repo: https://github.com/void269/Project-Erebus.git
+        dest: "/etc/Project-Erebus"
         force: yes
         update: yes
 
