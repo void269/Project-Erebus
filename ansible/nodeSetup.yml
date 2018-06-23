@@ -10,3 +10,10 @@
       apt: name=libssl-dev state=installed
       - name: install python ina219 package
       pip: name=pi-ina219
+      - name: pulling from Github
+      git:
+        repo: https://github.com/void269/Project-Erebus.git
+        dest: /etc
+        clone: yes
+        force: yes
+        update: yes
