@@ -13,7 +13,6 @@ class App_Logger
   def main(log_level = "INFO", text = nil, app_name = "Erebus")
     time = Time.new.utc.strftime('%m-%d-%y %H:%M:%S.%L%L')
     logfile = File.open(@loglongname, "w")
-    logfile.write("\n")
     logfile.write("#{time} -> #{log_level.upcase} - [#{app_name}] #{text}")
     logfile.close
   end
