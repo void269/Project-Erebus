@@ -5,8 +5,9 @@ class App_Logger
   def initialize
     @logpath = "/etc/Project-Erebus/logs"
     @logfilename = "runtime.log"
+    @loglongname = "#{@logpath}/#{@logfilename}"
     fileutils.mkdir_p @logpath
-    File.new("#{@logpath}/#{@logfilename}", "w") unless File.exist?("#{@logpath}/#{@logfilename}")
+    File.new(@loglongname, "w") unless File.exist?(@loglongname)
     @logfile = File.open("#{@logpath}/#{@logfilename}", "w")
   end
 
