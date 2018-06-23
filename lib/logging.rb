@@ -14,6 +14,7 @@ class App_Logger
     time = Time.new.utc.strftime('%m-%d-%y %H:%M:%S.%L%L')
     logfile = File.open(@loglongname, "a")
     logfile.write("#{time} -> #{log_level.upcase} - [#{app_name}] #{text}")
+    logfile.write("\n")
     logfile.close
   end
 end
