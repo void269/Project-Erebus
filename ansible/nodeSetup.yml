@@ -12,8 +12,6 @@
       apt: name=liblzma-dev state=installed
     - name: install libssl-dev package
       apt: name=libssl-dev state=installed
-    - name: install python ina219 package
-      pip: name=pi-ina219
     - name: pulling from Github
       git:
         repo: https://github.com/void269/Project-Erebus.git
@@ -21,3 +19,11 @@
         clone: yes
         force: yes
         update: yes
+
+- hosts: slave
+  remote_user: root
+  tasks:
+    - name: install python
+      apt: name=python-pip state=installed
+    - name: install python ina219 package
+      pip: name=pi-ina219
