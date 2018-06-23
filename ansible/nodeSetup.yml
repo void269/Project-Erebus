@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  task:
+  tasks:
     - name: install Ruby-DEV
       apt: name=ruby-dev state=installed
     - name: install Ruby
