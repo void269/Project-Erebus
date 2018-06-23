@@ -4,10 +4,10 @@
 # slavefile  = File.open("/etc/Project-Erebus/slave", "r")
 #end
 
-if File.open("/etc/Project-Erebus/master", "r")
+if File.file?("/etc/Project-Erebus/master")
   require './master.rb'
   run MyApp.new
-elsif File.open("/etc/Project-Erebus/slave", "r")
+elsif File.file?("/etc/Project-Erebus/slave")
   require './slave.rb'
   run MyApp.new
 else
