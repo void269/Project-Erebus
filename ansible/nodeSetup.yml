@@ -1,0 +1,12 @@
+---
+  - hosts: all
+    task:
+      - name: install Ruby
+      apt: name=ruby-dev state=installed
+      apt: name=ruby state=installed
+      - name: install dev packages
+      apt: name=zlib1g-dev state=installed
+      apt: name=liblzma-dev state=installed
+      apt: name=libssl-dev state=installed
+      - name: install python ina219 package
+      pip: name=pi-ina219
