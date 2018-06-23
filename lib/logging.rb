@@ -1,5 +1,5 @@
 require 'logger'
-require 'fileutils'
+require 'FileUtils'
 
 class App_Logger
   def initialize
