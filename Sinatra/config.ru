@@ -10,5 +10,5 @@ elsif File.file?("/etc/Project-Erebus/slave")
   require './slave.rb'
   run MyApp.new
 else
-  log.main(:error, "No master/slave file found!")
+  log.main("error", "No master/slave file found!")
 end
