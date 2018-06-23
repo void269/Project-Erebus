@@ -1,15 +1,15 @@
+[all:vars]
+ansible_connection=ssh
+ansible_ssh_user=root
+ansible_ssh_common-ARGS='-o StrictHostKeyChecking=no'
+
+[all:children]
+slave
+master
+
 [slave]
 10.0.1.133
 10.0.1.131
 
 [master]
 10.0.1.134
-
-[all:children]
-slave
-master
-
-[all:vars]
-ansible_connection=ssh
-ansible_ssh_user=root
-ansible_ssh_common-ARGS='-o StrictHostKeyChecking=no'
