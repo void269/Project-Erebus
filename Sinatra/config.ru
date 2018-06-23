@@ -1,7 +1,7 @@
 begin
- masterfile = File.open("/etc/Project-Erebus/master")
+ masterfile = File.open("/etc/Project-Erebus/master", "r")
 rescue
- slavefile  = File.open("/etc/Project-Erebus/slave")
+ slavefile  = File.open("/etc/Project-Erebus/slave", "r")
 end
 
 if masterfile
