@@ -28,3 +28,17 @@
       apt: name=python-pip state=installed
     - name: install python ina219 package
       pip: name=pi-ina219
+    - name: instal I2C tools
+      apt: name=i2c-tools state=installed
+    - name: enabling I2C
+      command: raspi-config nonint do_i2c 0
+    - name: rebooting
+      command: shutdown -r now
+
+- hosts: master
+  remote_user: root
+  tasks:
+    - name: install Grafana
+      apt: name=grafana state=installed
+    - name: installing influxdb
+      apt: name=influxdb state=installed
