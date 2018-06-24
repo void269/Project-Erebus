@@ -36,9 +36,8 @@
       shell: shutdown -r now
     - name: waiting for hosts to come back up
       wait_for_connection:
-        args:
-          delay: 15
-          timeout: 120
+        delay: 15
+        timeout: 120
 
 - hosts: master
   remote_user: root
