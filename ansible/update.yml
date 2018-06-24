@@ -1,52 +1,50 @@
 ---
-- hosts: all
+- hosts: slave
   remote_user: root
   tasks:
-    - name: check if slave file exists
-      local_action: stat path="/etc/Project-Erebus/slave"
-      register: slaveresult
-    - name: backup slave file if exists
+    - name: backup slave file
       copy:
         src: /etc/Project-Erebus/slave
         dest: /tmp/slave.bak
-        when: slaveresult|success
-    - name: check if master file exists
-      local_action: stat path="/etc/Project-Erebus/master"
-      register: masterresult
-    - name: backup master file if exists
+
+- hosts: master
+  remote_user: root
+  tasks:
+    - name: backup master file
       copy:
         src: /etc/Project-Erebus/master
         dest: /tmp/master.bak
-        when: masterresult|success
+
+- hosts: all
+  remote_user: root
+  tasks:
     - name: pulling from Github
       git:
         repo: https://github.com/void269/Project-Erebus.git
         dest: "/etc/Project-Erebus"
         force: yes
         update: yes
+
+- hosts: slave
+  remote_user: root
+  tasks:
     - name: checking if slave file is missing
       local_action: stat path="/etc/Project-Erebus/slave"
-      register: slaveresult2
-    - name: checking if backup slave file exists
-      local_action: stat path="/tmp/slave.bak"
-      register: slaveresult3
+      register: slaveresult
     - name: copying back slave file if needed
       copy:
         src: /tmp/slave.bak
         dest: /etc/Project-Erebus/slave
-        when:
-          - slaveresult2|failed
-          - slaveresult3|success
+        when: slaveresult|failed
+
+- hosts: master
+  remote_user: root
+  tasks:
     - name: checking if master file is missing
       local_action: stat path="/etc/Project-Erebus/master"
-      register: masterresult2
-    - name: checking if backup master file exists
-      local_action: stat path="/tmp/master.bak"
-      register: masterresult3
+      register: masterresult
     - name: copying back master file if needed
       copy:
         src: /tmp/master.bak
         dest: /etc/Project-Erebus/master
-        when: 
-          - masterresult2|failed
-          - masterresult3|success
+        when: masterresult|failed
