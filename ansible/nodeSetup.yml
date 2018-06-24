@@ -33,9 +33,9 @@
     - name: enabling I2C
       command: raspi-config nonint do_i2c 0
     - name: rebooting
-      command: shutdown -r now
-        async: 1
-        poll: 0
+      shell: shutdown -r now
+      async: 1
+      poll: 0
     - name: waiting for hosts to come back up
       wait_for_connection:
         args:
