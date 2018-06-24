@@ -1,0 +1,36 @@
+---
+- hosts: all
+  remote_user: root
+  tasks:
+    - name: backing up slave/master file (just in case)
+      local_action: stat path="/etc/Project-Erebus/slave"
+      register: slaveresult
+      copy:
+        src: /etc/Project-Erebus/slave
+        dest: /tmp/slave.bak
+        when: slaveresult|success
+      local_action: stat path="/etc/Project-Erebus/master"
+      register: masterresult
+      copy:
+        src: /etc/Project-Erebus/master
+        dest: /tmp/master.bak
+        when: masterresult|success
+    - name: pulling from Github
+      git:
+        repo: https://github.com/void269/Project-Erebus.git
+        dest: "/etc/Project-Erebus"
+        force: yes
+        update: yes
+    - name: recovering slave/master file if missing
+      local_action: stat path="/etc/Project-Erebus/slave"
+      register: slaveresult2
+      copy:
+        src: /etc/Project-Erebus/slave
+        dest: /tmp/slave.bak
+        when: slaveresult2|failed
+      local_action: stat path="/etc/Project-Erebus/master"
+      register: masterresult2
+      copy:
+        src: /etc/Project-Erebus/master
+        dest: /tmp/master.bak
+        when: masterresult2|failed
