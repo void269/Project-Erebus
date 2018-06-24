@@ -24,17 +24,29 @@
         dest: "/etc/Project-Erebus"
         force: yes
         update: yes
-    - name: recovering slave file if missing
+    - name: checking if slave file is missing
       local_action: stat path="/etc/Project-Erebus/slave"
       register: slaveresult2
+    - name: checking if backup slave file exists
+      local_action: stat path="/tmp/slave.bak"
+      register: slaveresult3
+    - name: copying back slave file if needed
       copy:
-        src: /etc/Project-Erebus/slave
-        dest: /tmp/slave.bak
-        when: slaveresult2|failed
-    - name: recovering master file if missing
+        src: /tmp/slave.bak
+        dest: /etc/Project-Erebus/slave
+        when:
+          - slaveresult2|failed
+          - slaveresult3|success
+    - name: checking if master file is missing
       local_action: stat path="/etc/Project-Erebus/master"
       register: masterresult2
+    - name: checking if backup master file exists
+      local_action: stat path="/tmp/master.bak"
+      register: masterresult3
+    - name: copying back master file if needed
       copy:
-        src: /etc/Project-Erebus/master
-        dest: /tmp/master.bak
-        when: masterresult2|failed
+        src: /tmp/master.bak
+        dest: /etc/Project-Erebus/master
+        when: 
+          - masterresult2|failed
+          - masterresult3|success
