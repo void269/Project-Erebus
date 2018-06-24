@@ -24,6 +24,14 @@
 - hosts: slave
   remote_user: root
   tasks:
+    - name: creating slave file
+      copy:
+        content: ""
+        dest: /etc/Project-Erebus/slave
+        force: no
+        group: sys
+        owner: root
+        mode: 0555
     - name: install python
       apt: name=python-pip state=installed
     - name: install python ina219 package
@@ -44,6 +52,14 @@
 - hosts: master
   remote_user: root
   tasks:
+    - name: creating slave file
+      copy:
+        content: ""
+        dest: /etc/Project-Erebus/master
+        force: no
+        group: sys
+        owner: root
+        mode: 0555
     - name: install Grafana
       apt: name=grafana state=installed
     - name: installing influxdb
