@@ -6,4 +6,4 @@ if [ ! -d "/etc/Project-Erebus"]; then
 else
   git -C /etc/Project-Erebus/ pull
 fi
-ansible-playbook -i hosts nodeSetup.yml --ask-pass
+ansible-playbook -i ./ansible/hosts ./ansible/nodeSetup.yml --ask-pass
