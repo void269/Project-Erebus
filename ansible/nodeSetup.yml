@@ -34,10 +34,12 @@
       command: raspi-config nonint do_i2c 0
     - name: rebooting
       shell: shutdown -r +1
-    - name: waiting for hosts to come back up
+
+    - name: Wait for system to become reachable again
       wait_for_connection:
-        delay: 15
-        timeout: 120
+        timeout: 900
+        delay: 120
+        sleep: 5
 
 - hosts: master
   remote_user: root
