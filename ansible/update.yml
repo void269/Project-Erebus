@@ -2,16 +2,18 @@
 - hosts: all
   remote_user: root
   tasks:
-    - name: backing up slave file if exists
+    - name: check if slave file exists
       local_action: stat path="/etc/Project-Erebus/slave"
       register: slaveresult
+    - name: backup slave file if exists
       copy:
         src: /etc/Project-Erebus/slave
         dest: /tmp/slave.bak
         when: slaveresult|success
-    - name: backing up master file if exists
+    - name: check if master file exists
       local_action: stat path="/etc/Project-Erebus/master"
       register: masterresult
+    - name: backup master file if exists
       copy:
         src: /etc/Project-Erebus/master
         dest: /tmp/master.bak
