@@ -1,5 +1,6 @@
 ---
 - hosts: slave
+  sudo: yes
   remote_user: root
   tasks:
     - name: backup slave file
@@ -8,6 +9,7 @@
         dest: /tmp/slave.bak
 
 - hosts: master
+  sudo: yes
   remote_user: root
   tasks:
     - name: backup master file
@@ -16,16 +18,18 @@
         dest: /tmp/master.bak
 
 - hosts: all
+  sudo: yes
   remote_user: root
   tasks:
     - name: pulling from Github
       git:
         repo: https://github.com/void269/Project-Erebus.git
-        dest: "/etc/Project-Erebus"
+        dest: /etc/Project-Erebus
         force: yes
         update: yes
 
 - hosts: slave
+  sudo: yes
   remote_user: root
   tasks:
     - name: checking if slave file is missing
@@ -38,6 +42,7 @@
         when: slaveresult|failed
 
 - hosts: master
+  sudo: yes
   remote_user: root
   tasks:
     - name: checking if master file is missing
