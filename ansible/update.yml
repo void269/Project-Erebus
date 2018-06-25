@@ -1,24 +1,23 @@
 ---
 - hosts: slave
-  sudo: yes
   remote_user: root
   tasks:
     - name: backup slave file
       copy:
+        remote_src: true
         src: /etc/Project-Erebus/slave
         dest: /tmp/slave.bak
 
 - hosts: master
-  sudo: yes
   remote_user: root
   tasks:
     - name: backup master file
       copy:
+        remote_src: true
         src: /etc/Project-Erebus/master
         dest: /tmp/master.bak
 
 - hosts: all
-  sudo: yes
   remote_user: root
   tasks:
     - name: pulling from Github
@@ -29,7 +28,6 @@
         update: yes
 
 - hosts: slave
-  sudo: yes
   remote_user: root
   tasks:
     - name: checking if slave file is missing
@@ -37,12 +35,12 @@
       register: slaveresult
     - name: copying back slave file if needed
       copy:
+        remote_src: true
         src: /tmp/slave.bak
         dest: /etc/Project-Erebus/slave
         when: slaveresult|failed
 
 - hosts: master
-  sudo: yes
   remote_user: root
   tasks:
     - name: checking if master file is missing
@@ -50,6 +48,7 @@
       register: masterresult
     - name: copying back master file if needed
       copy:
+        remote_src: true
         src: /tmp/master.bak
         dest: /etc/Project-Erebus/master
         when: masterresult|failed
