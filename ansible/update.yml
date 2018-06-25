@@ -33,12 +33,14 @@
     - name: checking if slave file is missing
       local_action: stat path="/etc/Project-Erebus/slave"
       register: slaveresult
+    - debug:
+      msg: ""
     - name: copying back slave file if needed
       copy:
         remote_src: true
         src: /tmp/slave.bak
         dest: /etc/Project-Erebus/slave
-      when: slaveresult.exists != success
+      when: slaveresult.stat.exists == False
 
 - hosts: master
   remote_user: root
@@ -51,4 +53,4 @@
         remote_src: true
         src: /tmp/master.bak
         dest: /etc/Project-Erebus/master
-      when: masterresult.exists != success
+      when: masterresult.stat.exists == False
