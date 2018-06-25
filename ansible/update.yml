@@ -26,6 +26,14 @@
         dest: /etc/Project-Erebus
         force: yes
         update: yes
+    - name: setting update.sh to executable
+      file:
+        path: /etc/Project-Erebus/update.sh
+        mode: a+x
+    - name: setting start.sh to executable
+      file:
+        path: /etc/Project-Erebus/start.sh
+        mode: a+x
 
 - hosts: slave
   remote_user: root
