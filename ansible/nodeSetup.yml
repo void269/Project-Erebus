@@ -63,3 +63,5 @@
       apt: name=grafana state=installed
     - name: installing influxdb
       apt: name=influxdb state=installed
+    - name: installing rspec
+      gem: name=rspec state=latest
