@@ -38,7 +38,7 @@
         remote_src: true
         src: /tmp/slave.bak
         dest: /etc/Project-Erebus/slave
-        when: slaveresult|failed
+        when: slaveresult.exists != success
 
 - hosts: master
   remote_user: root
@@ -51,4 +51,4 @@
         remote_src: true
         src: /tmp/master.bak
         dest: /etc/Project-Erebus/master
-        when: masterresult|failed
+        when: masterresult.exists != success
