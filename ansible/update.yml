@@ -33,8 +33,6 @@
     - name: checking if slave file is missing
       local_action: stat path="/etc/Project-Erebus/slave"
       register: slaveresult
-    - debug:
-      msg: ""
     - name: copying back slave file if needed
       copy:
         remote_src: true
