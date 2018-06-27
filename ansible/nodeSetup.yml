@@ -72,4 +72,6 @@
     - name: installing influxdb
       apt: name=influxdb state=installed
     - name: installing rspec
-      gem: name=rspec state=latest
+      gem: name=rspec-core state=latest
+      gem: name=rspec-expectations state=latest
+      gem: name=rspec-mocks state=latest
