@@ -3,8 +3,11 @@ require "spec_helper"
 require "logging"
 
 describe App_Logger do
-  it "#should write to a log file" do
-    @logging = App_Logger.new #.main(:info, "rspec test")
-    #@logging.loglongname.should == "/etc/Project-Erebus/logs/runtime.log"
+  it ".should create a new instance of the class" do
+    @logging = App_Logger.new
+  end
+
+  it "#should initialze instance variables" do
+    @logging.loglongname.should == "/etc/Project-Erebus/logs/runtime.log"
   end
 end
