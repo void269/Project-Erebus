@@ -3,9 +3,12 @@ require "spec_helper"
 require "logging"
 
 describe App_Logger do
-  it "#should write to a log file" do
-    logging = App_Logger.new #.main(:info, "rspec test")
-    logging.main.loglongname.should == "/etc/Project-Erebus/logs/runtime.log"
+  before :each do
+    @logging = App_Logger.new #.main(:info, "rspec test")
+  end
 
+  it "#should write to a log file" do
+
+    @logging.loglongname.should == "/etc/Project-Erebus/logs/runtime.log"
   end
 end

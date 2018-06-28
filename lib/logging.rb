@@ -2,9 +2,7 @@ require 'logger'
 require 'fileutils'
 
 class App_Logger
-  def initialize
-    logpath = "/etc/Project-Erebus/logs"
-    logfilename = "runtime.log"
+  def initialize(logpath = "/etc/Project-Erebus/logs", logfilename = "runtime.log")
     @loglongname = "#{logpath}/#{logfilename}"
     FileUtils.mkdir_p logpath
     File.new(@loglongname, "w") unless File.exist?(@loglongname)
