@@ -5,7 +5,7 @@ require "logging"
 describe App_Logger do
   it "#should write to a log file" do
     logging = App_Logger.new #.main(:info, "rspec test")
-    logging.loglongname.should == "/etc/Project-Erebus/logs/runtime.log"
+    logging.main.loglongname.should == "/etc/Project-Erebus/logs/runtime.log"
 
   end
 end
