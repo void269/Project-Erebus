@@ -3,12 +3,12 @@ require "spec_helper"
 require "logging"
 
 describe App_Logger do
-  it ".should create a new instance of the class" do
-    logging = App_Logger.new
+  before :each do
+    @logging = App_Logger.new
   end
 
   it "#should initialze instance variables" do
-    logging = App_Logger.new
-    logging.loglongname.should == "/etc/Project-Erebus/logs/runtime.log"
+    #logging = App_Logger.new
+    @logging.loglongname.should == "/etc/Project-Erebus/logs/runtime.log"
   end
 end
