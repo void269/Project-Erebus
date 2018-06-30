@@ -11,4 +11,10 @@ describe App_Logger do
     #logging = App_Logger.new
     @logging.loglongname.should == "/etc/Project-Erebus/logs/runtime.log"
   end
+
+  it "#should write an INFO log entry" do
+    test_IO = StringIO.new
+    @logging.main(:info, "this is a test",, test_IO)
+    expect(test_IO.string).to match(/info/)
+  end
 end

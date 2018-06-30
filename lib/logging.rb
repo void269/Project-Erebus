@@ -9,9 +9,9 @@ class App_Logger
     File.new(@loglongname, "w") unless File.exist?(@loglongname)
   end
 
-  def main(log_level = "INFO", text = nil, app_name = "Erebus")
+  def main(log_level = "INFO", text = nil, app_name = "Erebus", logfile = @loglongname)
     time = Time.new.utc.strftime('%m-%d-%y %H:%M:%S.%L%L')
-    logfile = File.open(@loglongname, "a")
+    logfile = File.open(logfile, "a")
     logfile.write("#{time} -> #{log_level.upcase} - [#{app_name}] #{text}")
     logfile.write("\n")
     logfile.close
