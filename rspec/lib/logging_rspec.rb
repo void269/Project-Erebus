@@ -15,6 +15,6 @@ describe App_Logger do
   it "#should write an INFO log entry" do
     File.stub(:write)
     @logging.main(:info, "this is a test")
-    expect(File).to have_recieved(:write).with(:info, "this is a test").once
+    expect(File).to have_recieved(:write).with("this is a test").once
   end
 end
