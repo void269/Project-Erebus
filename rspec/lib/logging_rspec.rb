@@ -9,13 +9,12 @@ describe App_Logger do
 
   it "#should initialze instance variables" do
     #logging = App_Logger.new
-    @logging.loglongname.should == "/etc/Project-Erebus/logs/runtime.log"
+    expect(@logging.loglongname).to eq("/etc/Project-Erebus/logs/runtime.log")
   end
 
   it "#should write an INFO log entry" do
-    test_IO = StringIO.new
-    @logging.main(:info, "this is a test","RSPEC_TEST", test_IO)
-    puts test_IO
-    expect(test_IO.string).to match(/info/)
+    File.stub(:write)
+    @logging.main(:info, "this is a test")
+    expect(File).to have_recieved(:write).with(:info, "this is a test").once
   end
 end
