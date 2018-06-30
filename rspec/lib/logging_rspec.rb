@@ -13,8 +13,8 @@ describe App_Logger do
   end
 
   it "#should write an INFO log entry" do
-    File.stub(:write)
-    @logging.main("INFO", "this is a test")
-    expect(@logging).to receive(main).with("INFO", "this is a test")
+    #File.stub(:write)
+    #@logging.main
+    expect(@logging).to receive(main).with("INFO", "This is a test")
   end
 end
