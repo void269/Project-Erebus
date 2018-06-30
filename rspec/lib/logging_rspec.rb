@@ -15,6 +15,7 @@ describe App_Logger do
   it "#should write an INFO log entry" do
     test_IO = StringIO.new
     @logging.main(:info, "this is a test","RSPEC_TEST", test_IO)
+    puts test_IO
     expect(test_IO.string).to match(/info/)
   end
 end
