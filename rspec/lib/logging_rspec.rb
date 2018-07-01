@@ -15,7 +15,7 @@ describe App_Logger do
   it "#should write an INFO log entry" do
     output = StringIO.new
     @logging.main("INFO", "This is a test", "RSPEC_Test", output)
-    puts output
+    expect(output).to be ~= "/INFO/"
     #expect(@logging.main).to receive("INFO", "This is a test").
   end
 end
