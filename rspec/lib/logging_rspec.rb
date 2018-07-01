@@ -22,7 +22,7 @@ describe App_Logger do
   it "#should write a WARNING log entry" do
     output = StringIO.new
     @logging.main("WARNING", "This is a test", "RSPEC_Test", output)
-    expect(output.string).to match(/WARNING/)
+    expect(output.string).to match(/WARN/)
     #expect(@logging.main).to receive("INFO", "This is a test").
   end
 
