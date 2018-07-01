@@ -1,5 +1,6 @@
 $LOAD_PATH.unshift('/etc/Project-Erebus/lib')
 require "rspec"
+require "gatherData"
 
 describe Gatherdata do
   before :each do
