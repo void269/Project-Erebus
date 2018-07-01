@@ -6,10 +6,8 @@ class Gatherdata
   end
 
   def getdata_ina219
-    puts "made it in the ina219 module"
     result = `python /etc/Project-Erebus/bin/return_ina219.py 0.03`
     result = "0,0,0" if result == nil || result == ""
-    puts "INA219 return is: #{result}"
     return result
   end
 end
