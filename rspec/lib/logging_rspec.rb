@@ -11,7 +11,7 @@ describe App_Logger do
     #logging = App_Logger.new
     expect(@logging.loglongname).to eq("/etc/Project-Erebus/logs/runtime.log")
   end
-  context "write to log file"
+  context "write to log file" do
     it "#should write an INFO log entry" do
       output = StringIO.new
       @logging.main("INFO", "This is a test", "RSPEC_Test", output)
