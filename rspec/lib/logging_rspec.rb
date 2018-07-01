@@ -13,8 +13,9 @@ describe App_Logger do
   end
 
   it "#should write an INFO log entry" do
-    #File.stub(:write)
-    #@logging.main
-    expect(@logging).to receive(main).with("INFO", "This is a test")
+    output = StringIO.new
+    @logging.main("INFO", "This is a test", "RSPEC_Test", output)
+    puts output
+    #expect(@logging.main).to receive("INFO", "This is a test").
   end
 end
