@@ -7,7 +7,7 @@ class App_Logger
     @loglongname = "#{logpath}/#{logfilename}"
     FileUtils.mkdir_p logpath
     File.new(@loglongname, "w") unless File.exist?(@loglongname)
-    @logfile = File.open(logfile, "a")
+    @logfile = File.open(@loglongname, "a")
   end
 
   def main(log_level = "INFO", text = nil, app_name = "Erebus", logfile = @logfile)
