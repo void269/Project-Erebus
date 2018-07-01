@@ -1,5 +1,5 @@
 $LOAD_PATH.unshift('/etc/Project-Erebus/lib')
-require "spec_helper"
+require "rspec"
 require "logging"
 
 describe App_Logger do
@@ -11,6 +11,7 @@ describe App_Logger do
     #logging = App_Logger.new
     expect(@logging.loglongname).to eq("/etc/Project-Erebus/logs/runtime.log")
   end
+
   context "write to log file" do
     it "#should write an INFO log entry" do
       output = StringIO.new
