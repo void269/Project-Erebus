@@ -16,6 +16,9 @@
         remote_src: true
         src: /etc/Project-Erebus/master
         dest: /tmp/master.bak
+    - name: backup hosts file
+      src: /etc/Project-Erebus/ansible/hosts
+      dest: /tmp/ansible_hosts.bak
 
 - hosts: all
   remote_user: root
@@ -51,12 +54,11 @@
 - hosts: master
   remote_user: root
   tasks:
-    - name: checking if master file is missing
-      local_action: stat path="/etc/Project-Erebus/master"
-      register: masterresult
-    - name: copying back master file if needed
+    - name: copying back master file
       copy:
         remote_src: true
         src: /tmp/master.bak
         dest: /etc/Project-Erebus/master
-      when: masterresult.stat.exists == False
+    - name: copying back hosts file
+      src: /tmp/ansible_hosts.bak
+      dest: /etc/Project-Erebus/ansible/hosts
