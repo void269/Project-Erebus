@@ -4,7 +4,7 @@ class ManageSlave
   def add_new_slave(ip = nil)
     return "Error missing IP Address" if ip == nil
     insert_to_file(ip, "[slave]", "/etc/Project-Erebus/ansible/inventory")
-    `./etc/Project-Erebus/start.sh`
+    `/etc/Project-Erebus/start.sh`
   end
 
   def insert_to_file(insert_text, after_line, file_path)
