@@ -1,4 +1,4 @@
-require "FileUtils"
+require "fileutils"
 
 class ManageSlave
   def add_new_slave(ip = nil)
