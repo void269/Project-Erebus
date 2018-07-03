@@ -24,4 +24,4 @@ class ManageSlave
   end
 end
 
-ManageSlave.new.add_new_slave(ip)
+#ManageSlave.new.add_new_slave(ip)
