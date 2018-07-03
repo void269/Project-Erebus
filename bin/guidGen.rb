@@ -1,4 +1,4 @@
-slavefile  = File.open("/etc/Project-Erebus/slave", 'r')
+slavefile  = File.open("/etc/erebus.conf/slave", 'r')
 
 if slavefile
   puts "This is a Slave"
@@ -13,7 +13,7 @@ if slavefile
     ip = all_ips[0].ip_address
 
     uuid = SecureRandom.uuid
-    slavefile  = File.open("/etc/Project-Erebus/slave", 'w')
+    slavefile  = File.open("/etc/erebus.conf/slave", 'w')
     slavefile.write("#{uuid},#{ip}")
   else
     uuid = slavefile.split(',')[0]

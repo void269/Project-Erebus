@@ -3,10 +3,10 @@ require 'logging'
 
 log = App_Logger.new
 
-if File.file?("/etc/Project-Erebus/master")
+if File.file?("/etc/erebus.conf/master")
   require './master.rb'
   run MyApp.new
-elsif File.file?("/etc/Project-Erebus/slave")
+elsif File.file?("/etc/erebus.conf/slave")
   require './slave.rb'
   run MyApp.new
 else

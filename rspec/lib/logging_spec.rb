@@ -9,7 +9,7 @@ describe App_Logger do
 
   it "#should initialze instance variables" do
     #logging = App_Logger.new
-    expect(@logging.loglongname).to eq("/etc/Project-Erebus/logs/runtime.log")
+    expect(@logging.loglongname).to eq("/etc/erebus.conf/logs/runtime.log")
   end
 
   context "write to log file" do

@@ -28,6 +28,14 @@
       file:
         path: /etc/Project-Erebus/start.sh
         mode: a+x
+    - name: setting up local content
+      tasks:
+        - name: creating erebus.conf directory
+          file: path=/etc/erebus.conf state=directory
+        - name: creating log directory
+          file: path=/var/log/erebus state=directory
+          file: path=/etc/erebus/logs state=directory
+          file: scr=/var/log/erebus dest=/etc/erebus/logs state=link
 
 - hosts: slave
   remote_user: root
@@ -35,7 +43,7 @@
     - name: creating slave file
       copy:
         content: ""
-        dest: /etc/Project-Erebus/slave
+        dest: /etc/erebus.conf/slave
         force: no
         group: sys
         owner: root
@@ -62,7 +70,7 @@
     - name: creating slave file
       copy:
         content: ""
-        dest: /etc/Project-Erebus/master
+        dest: /etc/erebus.conf/master
         force: no
         group: sys
         owner: root

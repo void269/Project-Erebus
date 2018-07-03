@@ -1,25 +1,4 @@
 ---
-- hosts: slave
-  remote_user: root
-  tasks:
-    - name: backup slave file
-      copy:
-        remote_src: true
-        src: /etc/Project-Erebus/slave
-        dest: /tmp/slave.bak
-
-- hosts: master
-  remote_user: root
-  tasks:
-    - name: backup master file
-      copy:
-        remote_src: true
-        src: /etc/Project-Erebus/master
-        dest: /tmp/master.bak
-    - name: backup hosts file
-      src: /etc/Project-Erebus/ansible/hosts
-      dest: /tmp/ansible_hosts.bak
-
 - hosts: all
   remote_user: root
   tasks:
@@ -29,36 +8,3 @@
         dest: /etc/Project-Erebus
         force: yes
         update: yes
-    - name: setting update.sh to executable
-      file:
-        path: /etc/Project-Erebus/update.sh
-        mode: a+x
-    - name: setting start.sh to executable
-      file:
-        path: /etc/Project-Erebus/start.sh
-        mode: a+x
-
-- hosts: slave
-  remote_user: root
-  tasks:
-    - name: checking if slave file is missing
-      local_action: stat path="/etc/Project-Erebus/slave"
-      register: slaveresult
-    - name: copying back slave file if needed
-      copy:
-        remote_src: true
-        src: /tmp/slave.bak
-        dest: /etc/Project-Erebus/slave
-      when: slaveresult.stat.exists == False
-
-- hosts: master
-  remote_user: root
-  tasks:
-    - name: copying back master file
-      copy:
-        remote_src: true
-        src: /tmp/master.bak
-        dest: /etc/Project-Erebus/master
-    - name: copying back hosts file
-      src: /tmp/ansible_hosts.bak
-      dest: /etc/Project-Erebus/ansible/hosts
