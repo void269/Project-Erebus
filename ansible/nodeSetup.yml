@@ -29,22 +29,22 @@
         path: /etc/Project-Erebus/start.sh
         mode: a+x
     - name: creating erebus.conf directory
-        file:
-          path: /etc/erebus.conf
-          state: directory
+      file:
+        path: /etc/erebus.conf
+        state: directory
     - name: creating erebus/log directory
-        file:
-          path: /var/log/erebus
-          state: directory
+      file:
+        path: /var/log/erebus
+        state: directory
     - name: creating var/log/erebus directory
-        file:
-          path: /etc/erebus/logs
-          state: directory
+      file:
+        path: /etc/erebus/logs
+        state: directory
     - name: creating symlink
-        file:
-          scr: /var/log/erebus
-          dest: /etc/erebus/logs
-          state: link
+      file:
+        scr: /var/log/erebus
+        dest: /etc/erebus/logs
+        state: link
 
 - hosts: slave
   remote_user: root
