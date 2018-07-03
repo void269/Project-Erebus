@@ -42,7 +42,7 @@
         state: directory
     - name: creating symlink
       file:
-        scr: /var/log/erebus
+        src: /var/log/erebus
         dest: /etc/erebus/logs
         state: link
 
