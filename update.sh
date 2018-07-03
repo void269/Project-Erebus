@@ -1,1 +1,1 @@
-ansible-playbook -i ./ansible/hosts ./ansible/update.yml --ask-pass
+ansible-playbook -i ./ansible/inventory ./ansible/update.yml --ask-pass
