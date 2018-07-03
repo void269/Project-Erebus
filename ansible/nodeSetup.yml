@@ -45,6 +45,7 @@
         src: /var/log/erebus
         dest: /etc/erebus/logs
         state: link
+        force: true
 
 - hosts: slave
   remote_user: root
