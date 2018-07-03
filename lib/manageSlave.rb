@@ -1,4 +1,4 @@
-#require "FileUtils"
+require "FileUtils"
 
 class ManageSlave
   def add_new_slave(ip = nil)
@@ -23,3 +23,5 @@ class ManageSlave
     FileUtils.mv(temp_file_path, file_path)
   end
 end
+
+ManageSlave.new.add_new_slave(ip)
