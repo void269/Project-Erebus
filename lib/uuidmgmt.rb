@@ -31,6 +31,7 @@ class UUID
       else
         @log.main(:WARN, "Slave file already contains data, doing nothing!")
         return true, "existing", "#{uuid},#{ip}"
+      end
     else
       @log.main(:error, "missing slave file, cannot proceed!")
       return false, "missing slave file", ""
