@@ -1,4 +1,9 @@
+$LOAD_PATH.unshift('/etc/Project-Erebus/lib')
+require 'uuidGen'
 require "fileutils"
+require 'rest-client'
+require 'json'
+require 'logging'
 
 class ManageSlave
   def add_new_slave(ip = nil)
@@ -8,7 +13,7 @@ class ManageSlave
     ### run Start.sh to initiate ansible on all nodes ###
     `sudo /etc/Project-Erebus/start.sh`
     ### generate guid for slave ###
-
+    success, state, result = UUIDGen.new
   end
 
   def insert_to_file(insert_text, after_line, file_path)
