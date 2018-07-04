@@ -23,5 +23,6 @@ class MyApp < Sinatra::Base
       content_type :json
       payload = {:state => state, :uuid => result}.to_json
       return payload
+    end
   end
 end
