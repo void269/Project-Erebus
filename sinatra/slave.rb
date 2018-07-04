@@ -3,6 +3,7 @@ $LOAD_PATH.unshift('/etc/Project-Erebus/lib')
 require 'logging'
 require 'sinatra/base'
 require 'gatherData'
+require 'uuidmgmt'
 @log = App_Logger.new
 
 class MyApp < Sinatra::Base
