@@ -19,21 +19,21 @@ class UUID
     if File.exist?("/etc/erebus.conf/slave")
       slavefile  = File.open("/etc/erebus.conf/slave", 'w+')
       if slavefile.size != 0
-        @log.main(:INFO, "Starting UUID Gen for slave")
+        #@log.main(:INFO, "Starting UUID Gen for slave")
         ip_addrs = Socket.ip_address_list
         all_ips = ip_addrs.reject {|i| i.ip_address =~ /127/ || i.ip_address =~ /:/}
         ip = all_ips[0].ip_address
-        @log.main(:INFO, "IP addr found -> #{ip}")
+        #@log.main(:INFO, "IP addr found -> #{ip}")
         uuid = SecureRandom.uuid
-        @log.main(:INFO, "UUID generated -> #{uuid}")
+        #@log.main(:INFO, "UUID generated -> #{uuid}")
 
         slavefile.write("#{uuid},#{ip}")
       else
-        @log.main(:WARN, "Slave file already contains data, doing nothing!")
+        #@log.main(:WARN, "Slave file already contains data, doing nothing!")
         return true, "existing", "#{uuid},#{ip}"
       end
     else
-      @log.main(:error, "missing slave file, cannot proceed!")
+      #@log.main(:error, "missing slave file, cannot proceed!")
       return false, "missing slave file", ""
     end
   end

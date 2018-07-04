@@ -14,7 +14,7 @@ class MyApp < Sinatra::Base
   get '/paneldata' do
     gather = Gatherdata.new
     result = gather.getdata_ina219
-    @log.main("info", "API call to '/' returned #{result}")
+    #@log.main("info", "API call to '/' returned #{result}")
     result
   end
 
