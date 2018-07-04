@@ -32,10 +32,6 @@
       file:
         path: /etc/erebus.conf
         state: directory
-    #- name: creating erebus/log directory
-    #  file:
-    #    path: /var/log/erebus
-    #    state: directory
     - name: creating var/log/erebus directory
       file:
         path: /etc/erebus/logs

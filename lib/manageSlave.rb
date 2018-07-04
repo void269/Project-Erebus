@@ -3,8 +3,12 @@ require "fileutils"
 class ManageSlave
   def add_new_slave(ip = nil)
     return "Error missing IP Address" if ip == nil
+    ### Add new slave to ansible inventory file ###
     insert_to_file(ip, "[slave]", "/etc/Project-Erebus/ansible/inventory")
+    ### run Start.sh to initiate ansible on all nodes ###
     `sudo /etc/Project-Erebus/start.sh`
+    ### generate guid for slave ###
+
   end
 
   def insert_to_file(insert_text, after_line, file_path)
