@@ -3,7 +3,7 @@ $LOAD_PATH.unshift('/etc/Project-Erebus/lib')
 require 'logging'
 require 'sinatra/base'
 require 'gatherData'
-@log = App_Logger.new.main
+@log = App_Logger.new
 
 class MyApp < Sinatra::Base
   get '/' do
@@ -13,7 +13,7 @@ class MyApp < Sinatra::Base
   get '/paneldata' do
     gather = Gatherdata.new
     result = gather.getdata_ina219
-    @log("info", "API call to '/' returned #{result}")
+    @log.main("info", "API call to '/' returned #{result}")
     result
   end
 
