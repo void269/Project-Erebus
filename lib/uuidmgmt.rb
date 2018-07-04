@@ -28,6 +28,7 @@ class UUID
         #@log.main(:INFO, "UUID generated -> #{uuid}")
 
         slavefile.write("#{uuid},#{ip}")
+        slavefile.flush
         slavefile.close
         return true, "new", "#{uuid},#{ip}"
       else
