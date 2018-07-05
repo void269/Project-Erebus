@@ -32,7 +32,8 @@ class UUID
         return true, "new", @output
       else
         #@log.main(:WARN, "Slave file already contains data, doing nothing!")
-        return true, "existing", @output
+        exist = File.open("/etc/erebus.conf/slave", 'r')
+        return true, "existing", exist.read
       end
     else
       #@log.main(:error, "missing slave file, cannot proceed!")
