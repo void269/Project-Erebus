@@ -25,6 +25,7 @@ class UUID
         #@log.main(:INFO, "IP addr found -> #{ip}")
         uuid = SecureRandom.uuid
         #@log.main(:INFO, "UUID generated -> #{uuid}")
+        puts "in uuid buld"
         @output = "#{uuid},#{ip}"
         File.open("/etc/erebus/slave", 'w') do |f|
           f.write(@output)
