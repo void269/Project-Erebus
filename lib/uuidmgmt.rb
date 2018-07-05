@@ -4,8 +4,8 @@ require 'securerandom'
 require 'socket'
 
 class UUID
-  def initialize(log = App_Logger.new)
-    @log = log
+  def initialize
+    @log = App_Logger.new
     if File.exist?("/etc/erebus/slave")
       uuid_gen_slave
     end
