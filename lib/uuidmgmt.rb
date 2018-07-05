@@ -6,6 +6,7 @@ require 'socket'
 class UUID
   def initialize
     @log = App_Logger.new
+    @log.write(:INFO, "in uuidGen init")
     if File.exist?("/etc/erebus/slave")
       uuid_gen_slave
     end
