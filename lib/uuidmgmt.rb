@@ -29,10 +29,10 @@ class UUID
         File.open("/etc/erebus.conf/slave", 'w') do |f|
           f.write(output)
         end
-        return true, "new", "#{uuid},#{ip}"
+        return true, "new", output
       else
         #@log.main(:WARN, "Slave file already contains data, doing nothing!")
-        return true, "existing", "#{uuid},#{ip}"
+        return true, "existing", output
       end
     else
       #@log.main(:error, "missing slave file, cannot proceed!")
