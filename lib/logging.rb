@@ -20,5 +20,7 @@ class App_Logger
       log_level.upcase == :ERROR
     time = Time.new.utc.strftime('%m-%d-%y %H:%M:%S.%L%L')
     log.write("#{time} -> #{log_level.upcase} - [#{app_name}] #{text}\n")
+    log.flush
+    log.close
   end
 end
