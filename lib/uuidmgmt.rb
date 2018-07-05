@@ -29,6 +29,7 @@ class UUID
         @output = "#{uuid},#{ip}"
         File.open("/etc/erebus/slave", 'w') do |f|
           f.write(@output)
+          f.close
         end
         return true, "new", @output
       else
