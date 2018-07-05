@@ -17,7 +17,6 @@ class UUID
   end
 
   def uuid_gen_slave
-    slave_exists? = File.exist?("/etc/erebus/slave")
     if File.exist?("/etc/erebus/slave")
       @log.write(:INFO, "slave file exists")
       if File.zero?("/etc/erebus/slave")
@@ -36,8 +35,7 @@ class UUID
         end
         @log.write(:INFO, "before return")
         return {:success => true, :state => "new", :output => @output}
-        @log.write(:INFO, "After return")
-        
+        @log.write(:INFO, "after return")
       else
         @log.write(:WARN, "Slave file already contains data, doing nothing!")
         exist = File.open("/etc/erebus/slave", 'r')
