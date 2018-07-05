@@ -18,14 +18,14 @@ class UUID
   def uuid_gen_slave
     if File.exist?("/etc/erebus/slave")
       if File.zero?("/etc/erebus/slave")
-        #@log.main(:INFO, "Starting UUID Gen for slave")
+        @log.main(:INFO, "Starting UUID Gen for slave")
         ip_addrs = Socket.ip_address_list
         all_ips = ip_addrs.reject {|i| i.ip_address =~ /127/ || i.ip_address =~ /:/}
         ip = all_ips[0].ip_address
-        #@log.main(:INFO, "IP addr found -> #{ip}")
+        @log.main(:INFO, "IP addr found -> #{ip}")
         uuid = SecureRandom.uuid
-        #@log.main(:INFO, "UUID generated -> #{uuid}")
-        puts "in uuid buld"
+        @log.main(:INFO, "UUID generated -> #{uuid}")
+        @log.main(:INFO, "in uuid buld")
         @output = "#{uuid},#{ip}"
         File.open("/etc/erebus/slave", 'w') do |f|
           f.write(@output)
@@ -33,12 +33,12 @@ class UUID
         end
         return true, "new", @output
       else
-        #@log.main(:WARN, "Slave file already contains data, doing nothing!")
+        @log.main(:WARN, "Slave file already contains data, doing nothing!")
         exist = File.open("/etc/erebus/slave", 'r')
         return {:success => true, :state => "existing", :output => exist.read}
       end
     else
-      #@log.main(:error, "missing slave file, cannot proceed!")
+      @log.main(:error, "missing slave file, cannot proceed!")
       return {:success => false, :state => "missing slave file", :output => ""}
     end
   end
