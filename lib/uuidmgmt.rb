@@ -6,18 +6,18 @@ require 'socket'
 class UUID
   def initialize(log = App_Logger.new)
     @log = log
-    if File.exist?("/etc/erebus.conf/slave")
+    if File.exist?("/etc/erebus/slave")
       uuid_gen_slave
     end
 
-    if File.exist?("/etc/erebus.conf/master")
+    if File.exist?("/etc/erebus/master")
       uuid_gen_master
     end
   end
 
   def uuid_gen_slave
-    if File.exist?("/etc/erebus.conf/slave")
-      if File.size("/etc/erebus.conf/slave") == 0
+    if File.exist?("/etc/erebus/slave")
+      if File.size("/etc/erebus/slave") == 0
         #@log.main(:INFO, "Starting UUID Gen for slave")
         ip_addrs = Socket.ip_address_list
         all_ips = ip_addrs.reject {|i| i.ip_address =~ /127/ || i.ip_address =~ /:/}
@@ -26,13 +26,13 @@ class UUID
         uuid = SecureRandom.uuid
         #@log.main(:INFO, "UUID generated -> #{uuid}")
         @output = "#{uuid},#{ip}"
-        File.open("/etc/erebus.conf/slave", 'w') do |f|
+        File.open("/etc/erebus/slave", 'w') do |f|
           f.write(@output)
         end
         return true, "new", @output
       else
         #@log.main(:WARN, "Slave file already contains data, doing nothing!")
-        exist = File.open("/etc/erebus.conf/slave", 'r')
+        exist = File.open("/etc/erebus/slave", 'r')
         return true, "existing", exist.read
       end
     else
