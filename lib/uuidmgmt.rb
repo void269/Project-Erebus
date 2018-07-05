@@ -33,6 +33,7 @@ class UUID
           f.write(@output)
           f.close
         end
+        @log.write(:INFO, "before return")
         return true, "new", @output
       else
         @log.write(:WARN, "Slave file already contains data, doing nothing!")
