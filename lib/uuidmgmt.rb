@@ -35,7 +35,6 @@ class UUID
         end
         @log.write(:INFO, "before return")
         return {:success => true, :state => "new", :output => @output}
-        break
         @log.write(:INFO, "after return")
       else
         @log.write(:WARN, "Slave file already contains data, doing nothing!")
