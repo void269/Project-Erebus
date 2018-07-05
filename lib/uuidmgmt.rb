@@ -37,6 +37,7 @@ class UUID
         @log.write(:INFO, "before return")
         return {:success => true, :state => "new", :output => @output}
         @log.write(:INFO, "After return")
+        
       else
         @log.write(:WARN, "Slave file already contains data, doing nothing!")
         exist = File.open("/etc/erebus/slave", 'r')
