@@ -12,7 +12,7 @@ class App_Logger
 
   def write(log_level = "INFO", text = nil, app_name = "Erebus", log = @logfile)
     log_level = "WARN" if log_level.upcase == "WARNING"
-    log_level = "OTHER" unless log_level.upcase == "INFO" || log_level.upcase == "WARN" || log_level.upcase == "ERROR"
+    log_level = "OTHER" unless log_level.upcase == "INFO" || log_level.upcase == "WARN" || log_level.upcase == "ERROR" || log_level == :INFO || log_level == :WARN || log_level == :ERROR
     time = Time.new.utc.strftime('%m-%d-%y %H:%M:%S.%L%L')
     log.write("#{time} -> #{log_level.upcase} - [#{app_name}] #{text}\n")
   end
