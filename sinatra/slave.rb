@@ -20,10 +20,10 @@ class MyApp < Sinatra::Base
 
   post '/uuidgen' do
     uuid = UUID.new
-    success, state, result = uuid.uuid_gen_slave
-    if success == true
+    result = uuid.uuid_gen_slave
+    if result[:success] == true
       content_type :json
-      payload = {:state => state, :uuid => result}.to_json
+      payload = {:state => result[:state], :uuid => result[:output]}.to_json
       return payload
     end
   end

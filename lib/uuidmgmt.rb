@@ -35,15 +35,15 @@ class UUID
       else
         #@log.main(:WARN, "Slave file already contains data, doing nothing!")
         exist = File.open("/etc/erebus/slave", 'r')
-        return true, "existing", exist.read
+        return {:success => true, :state => "existing", :output => exist.read}
       end
     else
       #@log.main(:error, "missing slave file, cannot proceed!")
-      return false, "missing slave file", ""
+      return {:success => false, :state => "missing slave file", :output => ""}
     end
   end
 
   def uuid_gen_master
-    return false, "is master", ""
+    return {:success => false, :state => "node is master", :output => ""}
   end
 end
