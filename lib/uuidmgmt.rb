@@ -25,14 +25,14 @@ class UUID
         #@log.main(:INFO, "IP addr found -> #{ip}")
         uuid = SecureRandom.uuid
         #@log.main(:INFO, "UUID generated -> #{uuid}")
-        output = "#{uuid},#{ip}"
+        @output = "#{uuid},#{ip}"
         File.open("/etc/erebus.conf/slave", 'w') do |f|
-          f.write(output)
+          f.write(@output)
         end
-        return true, "new", output
+        return true, "new", @output
       else
         #@log.main(:WARN, "Slave file already contains data, doing nothing!")
-        return true, "existing", output
+        return true, "existing", @output
       end
     else
       #@log.main(:error, "missing slave file, cannot proceed!")
