@@ -10,7 +10,7 @@ class App_Logger
     @logfile = File.open(@loglongname, "a")
   end
 
-  def main(log_level = "INFO", text = nil, app_name = "Erebus", logfile = @logfile)
+  def write(log_level = "INFO", text = nil, app_name = "Erebus", logfile = @logfile)
     log_level = "WARN" if log_level.upcase == "WARNING"
     log_level = "OTHER" unless log_level.upcase == "INFO" || log_level.upcase == "WARN" || log_level.upcase == "ERROR"
     time = Time.new.utc.strftime('%m-%d-%y %H:%M:%S.%L%L')
