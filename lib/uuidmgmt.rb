@@ -17,15 +17,11 @@ class UUID
   end
 
   def uuid_gen_slave
-    slave_exist = File.exist?("/etc/erebus/slave")
-    slave_empty = File.zero?("/etc/erebus/slave")
-    if slave_exist
+    if file_exist?("/etc/erebus/slave")
       @log.write(:INFO, "slave file exists")
-      if slave_empty
+      if file_empty?("/etc/erebus/slave")
         @log.write(:INFO, "Starting UUID Gen for slave")
-        ip_addrs = Socket.ip_address_list
-        all_ips = ip_addrs.reject {|i| i.ip_address =~ /127/ || i.ip_address =~ /:/}
-        ip = all_ips[0].ip_address
+        ip = get_local_ip
         @log.write(:INFO, "IP addr found -> #{ip}")
         uuid = SecureRandom.uuid
         @log.write(:INFO, "UUID generated -> #{uuid}")
@@ -51,5 +47,20 @@ class UUID
 
   def uuid_gen_master
     return {:success => false, :state => "node is master", :output => ""}
+  end
+
+  def file_empty?(file_path)
+    return true if File.zero?(file_path)
+  end
+
+  def file_exist?(file_path)
+    return true if File.exists?(file_path)
+  end
+
+  def get_local_ip
+    ip_addrs = Socket.ip_address_list
+    all_ips = ip_addrs.reject {|i| i.ip_address =~ /127/ || i.ip_address =~ /:/}
+    ip = all_ips[0].ip_address
+    return ip
   end
 end
