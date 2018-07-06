@@ -19,9 +19,9 @@ class UUID
   def uuid_gen_slave
     slave_exist = File.exist?("/etc/erebus/slave")
     slave_empty = File.zero?("/etc/erebus/slave")
-    if slave_exist?
+    if slave_exist
       @log.write(:INFO, "slave file exists")
-      if slave_empty?
+      if slave_empty
         @log.write(:INFO, "Starting UUID Gen for slave")
         ip_addrs = Socket.ip_address_list
         all_ips = ip_addrs.reject {|i| i.ip_address =~ /127/ || i.ip_address =~ /:/}
