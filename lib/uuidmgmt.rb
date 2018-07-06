@@ -27,15 +27,12 @@ class UUID
       @log.write(:INFO, "IP addr found -> #{ip}")
       uuid = SecureRandom.uuid
       @log.write(:INFO, "UUID generated -> #{uuid}")
-      @log.write(:INFO, "in uuid buld")
       @output = "#{uuid},#{ip}"
       File.open("/etc/erebus/slave", 'w') do |f|
         f.write(@output)
         f.close
       end
-      @log.write(:INFO, "before return")
       return {:success => true, :state => "new", :output => @output}
-      @log.write(:INFO, "after return")
     else
       @log.write(:WARN, "Slave file already contains data, doing nothing!")
       exist = File.open("/etc/erebus/slave", 'r')
@@ -44,6 +41,7 @@ class UUID
   end
 
   def uuid_gen_master
+    @log.write(:INFO, "master file exists")
     return {:success => false, :state => "node is master", :output => ""}
   end
 
