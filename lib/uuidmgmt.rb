@@ -17,8 +17,8 @@ class UUID
   end
 
   def uuid_gen_slave
-    slave_exist? = File.exist?("/etc/erebus/slave")
-    slave_empty? = File.zero?("/etc/erebus/slave")
+    slave_exist = File.exist?("/etc/erebus/slave")
+    slave_empty = File.zero?("/etc/erebus/slave")
     if slave_exist?
       @log.write(:INFO, "slave file exists")
       if slave_empty?
