@@ -52,7 +52,7 @@ class ManageSlave
     @log.write(:info, "insterting #{insert_text} after line #{after_line} in file #{file_path}")
     if after_line == nil
       File.open(file_path, "a") do |f|
-        f.write(insert_text)
+        f.write("#{insert_text}\n")
       end
     else
       temp_file_path = "#{file_path}_new"
@@ -68,7 +68,7 @@ class ManageSlave
       tempfile.close
 
       FileUtils.mv(temp_file_path, file_path)
-      @log.write(:info, "File inser complete")
+      @log.write(:info, "File insert complete")
     end
   end
 
