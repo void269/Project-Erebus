@@ -35,7 +35,7 @@ class ManageSlave
         replace_in_file(slaveuuid.split(',')[0], slaveuuid, @master)
         # replacing in ansible inventory file
         ansible_input = "#{slaveuuid.split(',')[1]} uuid=#{slaveuuid.split(',')[0]}"
-        replace_in_file(slaveuuid.split(',')[0], ansible_input, "/etc/Project-Erebus/ansible/inventory")
+        replace_in_file(slaveuuid.split(',')[0], ansible_input, "/etc/erebus/inventory")
       end
     else ########################################################################################---> is new slave
       @log.write(:info, "Adding new slave #{ip}")
@@ -43,7 +43,7 @@ class ManageSlave
       insert_to_file(slaveuuid, nil, @master)
       ### Add new slave to ansible inventory file ###
       ansible_input = "#{slaveuuid.split(',')[1]} uuid=#{slaveuuid.split(',')[0]}"
-      insert_to_file(ansible_input, "[slave]", "/etc/Project-Erebus/ansible/inventory")
+      insert_to_file(ansible_input, "[slave]", "/etc/erebus/inventory")
     end
     #`sudo /etc/Project-Erebus/start.sh`  ############### NEEDS SSH PASS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   end
