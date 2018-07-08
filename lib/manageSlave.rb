@@ -49,7 +49,7 @@ class ManageSlave
   end
 
   def insert_to_file(insert_text, after_line = nil, file_path)
-    @log.write(:info, "insterting #{instert_text} after line #{after_line} in file #{file_path}")
+    @log.write(:info, "insterting #{insert_text} after line #{after_line} in file #{file_path}")
     if after_line == nil
       File.open(file_path, "a") do |f|
         f.write(insert_text)
