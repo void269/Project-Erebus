@@ -6,4 +6,9 @@ if [ ! -d "/etc/Project-Erebus" ]; then
 else
   git -C /etc/Project-Erebus/ pull
 fi
-ansible-playbook -i /etc/Project-Erebus/ansible/inventory /etc/Project-Erebus/ansible/nodeSetup.yml --ask-pass
+if [ ! -f "/etc/erebus/inventory" ]; then
+  cp /etc/Project-Erebus/ansible/inventory.template /etc/erebus/inventory
+  ip=ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'
+  sed -i "s/masterip/$ip/" /etc/erebus/inventory
+fi
+ansible-playbook -i /etc/erebus/inventory /etc/Project-Erebus/ansible/nodeSetup.yml --ask-pass

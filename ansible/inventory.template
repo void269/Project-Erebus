@@ -8,8 +8,6 @@ slave
 master
 
 [slave]
-10.0.1.133
-10.0.1.131
 
 [master]
-10.0.1.134
+masterip
