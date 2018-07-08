@@ -6,7 +6,10 @@ require 'gatherData'
 require 'uuidmgmt'
 @log = App_Logger.new
 
+
 class MyApp < Sinatra::Base
+  set :port 80
+  
   get '/' do
     "hello"
   end
