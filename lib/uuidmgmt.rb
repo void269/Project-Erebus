@@ -37,12 +37,13 @@ class UUID
       return {:success => true, :state => "new", :output => @output}
     else #############################################################################---> slave file is NOT empty
       @log.write(:WARN, "Slave file already contains data, checking if IP has changed")
-      if File.readlines(@slave_path).grep(/#{ip}/).size > 0 ######################---> IP did NOT change
+      exist = File.readlines(@slave_path).grep(/#{ip}/)[0].strip
+      if exist.size > 0 ##################################################################---> IP did NOT change
         @log.write(:INFO, "IP address has not changed, doing nothing")
-        return {:success => true, :state => "existing", :output => exist.read}
+        return {:success => true, :state => "existing", :output => exist}
       else ###################################################################################---> IP did change
         @log.write(:INFO, "IP address has changed, updating slave file")
-        uuid = File.readlines(@slave_path)[0].split(',')[0]
+        uuid = exist.split(',')[0]
         uuid_ip = "#{uuid},#{ip}"
         replace_in_file(uuid, uuid_ip, @slave_path)
         return {:success => true, :state => "updated", :output => uuid_ip}
