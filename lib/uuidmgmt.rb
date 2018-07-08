@@ -22,10 +22,9 @@ class UUID
   end
 
   def uuid_gen_slave
-    @log.write(:INFO, @slave_path)
+    ip = get_local_ip
     if file_empty?(@slave_path) ##########################################################---> slave file is empty
       @log.write(:INFO, "Starting UUID Gen for slave")
-      ip = get_local_ip
       @log.write(:INFO, "IP addr found -> #{ip}")
       uuid = SecureRandom.uuid
       @log.write(:INFO, "UUID generated -> #{uuid}")
