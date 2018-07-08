@@ -11,5 +11,5 @@ elsif File.file?("/etc/erebus/slave")
   run MyApp.new
 else
   puts "ERROR - No master/slave file found! Nothing to do, exiting Sinatra with error"
-  log.main("error", "No master/slave file found!")
+  log.write("error", "No master/slave file found!")
 end
