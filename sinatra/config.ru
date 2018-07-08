@@ -1,6 +1,7 @@
 $LOAD_PATH.unshift('/etc/Project-Erebus/lib')
 require 'logging'
 
+set :port 80
 log = App_Logger.new
 
 if File.file?("/etc/erebus/master")
