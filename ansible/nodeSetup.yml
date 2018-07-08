@@ -12,6 +12,10 @@
       apt: name=liblzma-dev state=installed
     - name: install libssl-dev package
       apt: name=libssl-dev state=installed
+    - name: install ruby rest-client gem
+      gem:
+        name: rest-client
+        state: latest
     - name: install Github
       apt: name=git state=installed
     - name: pulling from Github
@@ -28,9 +32,9 @@
       file:
         path: /etc/Project-Erebus/start.sh
         mode: a+x
-    - name: creating erebus.conf directory
+    - name: creating erebus directory
       file:
-        path: /etc/erebus.conf
+        path: /etc/erebus
         state: directory
     - name: creating var/log/erebus directory
       file:
