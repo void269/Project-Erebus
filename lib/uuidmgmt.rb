@@ -29,7 +29,7 @@ class UUID
       @log.write(:INFO, "UUID generated -> #{uuid}")
       @output = "#{uuid},#{ip}"
       File.open("/etc/erebus/slave", 'w') do |f|
-        f.write(@output)
+        f.write("#{@output}\n")
         f.close
       end
       return {:success => true, :state => "new", :output => @output}
