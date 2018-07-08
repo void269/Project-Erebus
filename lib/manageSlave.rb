@@ -1,5 +1,5 @@
 $LOAD_PATH.unshift('/etc/Project-Erebus/lib')
-require 'uuidGen'
+require 'uuidmgmt'
 require "fileutils"
 require 'rest-client'
 require 'json'
