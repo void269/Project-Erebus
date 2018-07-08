@@ -24,7 +24,7 @@ class ManageSlave
     @log.write(:info, "result is: #{eval(result.body)[:uuid]}")
     slaveuuid = result['uuid']
     @log.write(:info, "slaveuuid is: #{slaveuuid}")
-    existing = File.open(@master).grep(/#{slaveuuid.split(',')[0]}/)[0].chomp
+    existing = File.open(@master).grep(/#{slaveuuid.split(',')[0]}/)[0]
     @log.write(:info, "existing is: #{existing}")
     if existing.size > 0 ####################################################################---> is NOT new slave
       @log.write(:info, "UUID found, slave already exists")
