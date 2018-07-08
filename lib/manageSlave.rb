@@ -21,8 +21,11 @@ class ManageSlave
     @log.write(:info, "Checking if slave already exists")
     ### generate guid for slave ###
     result = RestClient.post("http://#{ip}/uuidgen", nil)
+    @log.write(:info, "result is: #{result}")
     slaveuuid = result['uuid']
+    @log.write(:info, "slaveuuid is: #{slaveuuid}")
     existing = File.open(@master).grep(/#{slaveuuid.split(',')[0]}/)[0].chomp
+    @log.write(:info, "existing is: #{existing}")
     if existing.size > 0 ####################################################################---> is NOT new slave
       @log.write(:info, "UUID found, slave already exists")
       if existing.split(',')[1] == ip ###################################################---> ip has NOT changed

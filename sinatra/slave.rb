@@ -8,9 +8,6 @@ require 'uuidmgmt'
 
 
 class MyApp < Sinatra::Base
-  set :port, 80
-  set :bind, '0.0.0.0'
-
   get '/' do
     "hello"
   end
