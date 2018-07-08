@@ -21,7 +21,7 @@ class ManageSlave
     @log.write(:info, "Checking if slave already exists")
     ### generate guid for slave ###
     result = RestClient.post("http://#{ip}/uuidgen", nil)
-    @log.write(:info, "result is: #{eval(result.body)}")
+    @log.write(:info, "result is: #{eval(result.body)['uuid']}")
     slaveuuid = result['uuid']
     @log.write(:info, "slaveuuid is: #{slaveuuid}")
     existing = File.open(@master).grep(/#{slaveuuid.split(',')[0]}/)[0].chomp
