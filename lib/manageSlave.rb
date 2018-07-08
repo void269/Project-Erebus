@@ -27,7 +27,7 @@ class ManageSlave
     @log.write(:info, "slaveuuid is: #{slaveuuid}")
     if File.open(@master).grep(/#{slaveuuid.split(',')[0]}/)[0] #############################---> is NOT new slave
       @log.write(:info, "UUID found, slave already exists")
-      if existing.split(',')[1] == ip ###################################################---> ip has NOT changed
+      if slaveuuid.split(',')[1] == ip ###################################################---> ip has NOT changed
         @log.write(:info, "IP is the same in master file, doing nothing")
       else ##################################################################################---> ip has changed
         @log.write(:info, "IP is different than whats in master file!")
