@@ -43,7 +43,7 @@ class ManageSlave
       ansible_input = "#{slaveuuid.split(',')[1]} uuid=#{slaveuuid.split(',')[0]}"
       insert_to_file(ansible_input, "[slave]", "/etc/Project-Erebus/ansible/inventory")
     end
-    `sudo /etc/Project-Erebus/start.sh`  ############### NEEDS SSH PASS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    #`sudo /etc/Project-Erebus/start.sh`  ############### NEEDS SSH PASS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   end
 
   def insert_to_file(insert_text, after_line = nil, file_path)
