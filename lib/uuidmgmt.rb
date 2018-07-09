@@ -43,7 +43,7 @@ class UUID
         return {:success => true, :state => "existing", :output => exist}
       else ###################################################################################---> IP did change
         @log.write(:INFO, "IP address has changed, updating slave file")
-        uuid = exist.split(',')[0]
+        uuid = File.readlines(@slave_path).split(',')[0]
         uuid_ip = "#{uuid},#{ip}"
         replace_in_file(uuid, uuid_ip, @slave_path)
         return {:success => true, :state => "updated", :output => uuid_ip}
