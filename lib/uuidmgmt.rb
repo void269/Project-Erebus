@@ -37,8 +37,7 @@ class UUID
     else #############################################################################---> slave file is NOT empty
       @log.write(:WARN, "Slave file already contains data, checking if IP has changed")
       exist = File.readlines(@slave_path).grep(/#{ip}/)[0]
-      @log.write(:INFO, "@@@@@@@@@@@@@@@@@@@@@@@ exist is: #{exist}")
-      if exist.size > 0 ##################################################################---> IP did NOT change
+      if exist != nil ##################################################################---> IP did NOT change
         @log.write(:INFO, "IP address has not changed, doing nothing")
         return {:success => true, :state => "existing", :output => exist}
       else ###################################################################################---> IP did change
