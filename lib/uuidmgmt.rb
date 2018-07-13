@@ -37,7 +37,6 @@ class UUID
     else #############################################################################---> slave file is NOT empty
       @log.write(:WARN, "Slave file already contains data, checking if IP has changed")
       exist = File.readlines(@slave_path).grep(/#{ip}/)[0]
-      @log.write(:INFO, "@@@@@@@@@@@@@@@@@@@@@@@ exist is: #{exist}")
       if exist != nil ##################################################################---> IP did NOT change
         @log.write(:INFO, "IP address has not changed, doing nothing")
         return {:success => true, :state => "existing", :output => exist}
@@ -45,7 +44,7 @@ class UUID
         @log.write(:INFO, "IP address has changed, updating slave file")
         uuid = File.readlines(@slave_path)[0].split(',')[0]
         uuid_ip = "#{uuid},#{ip}"
-        replace_in_file(uuid, uuid_ip, @slave_path)
+        replace_line(uuid, uuid_ip, @slave_path)
         return {:success => true, :state => "updated", :output => uuid_ip}
       end
     end
@@ -72,7 +71,7 @@ class UUID
     return ip
   end
 
-  def replace_in_file(oldline, newline, file_path)
+  def replace_string(oldline, newline, file_path)
     @log.write(:info, "Replacing *#{oldline}* with \"#{newline}\" in file #{file_path}")
     contents = File.read(file_path)
     new_contents = contents.gsub(/#{oldline}/, newline)
@@ -80,5 +79,20 @@ class UUID
       f.write(new_contents)
     end
     @log.write(:info, "completed line replace")
+  end
+
+  def replace_line(match_string, new_line, file_path)
+    contents = File.read(file_path)
+    new_contents = ""
+    contents.each_line do |line|
+      if line.match(/#{match_string}/)
+        new_contents << "#{new_line}\n"
+      else
+        new_contents << line
+      end
+    end
+    file = File.open(file_path, "w")
+    file.write(new_contents)
+    file.close
   end
 end

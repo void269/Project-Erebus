@@ -32,10 +32,10 @@ class ManageSlave
       else ##################################################################################---> ip has changed
         @log.write(:info, "IP is different than whats in master file!")
         # replacing in master file
-        replace_in_file(slaveuuid.split(',')[0], slaveuuid, @master)
+        replace_line(slaveuuid.split(',')[0], slaveuuid, @master)
         # replacing in ansible inventory file
         ansible_input = "#{slaveuuid.split(',')[1]} uuid=#{slaveuuid.split(',')[0]}"
-        replace_in_file(slaveuuid.split(',')[0], ansible_input, "/etc/erebus/inventory")
+        replace_line(slaveuuid.split(',')[0], ansible_input, "/etc/erebus/inventory")
       end
     else ########################################################################################---> is new slave
       @log.write(:info, "Adding new slave #{ip}")
@@ -72,7 +72,7 @@ class ManageSlave
     end
   end
 
-  def replace_in_file(oldline, newline, file_path)
+  def replace_string(oldline, newline, file_path)
     @log.write(:info, "Replacing *#{oldline}* with \"#{newline}\" in file #{file_path}")
     contents = File.read(file_path)
     new_contents = contents.gsub(/#{oldline}/, newline)
@@ -80,6 +80,21 @@ class ManageSlave
       f.write(new_contents)
     end
     @log.write(:info, "completed line replace")
+  end
+
+  def replace_line(match_string, new_line, file_path)
+    contents = File.read(file_path)
+    new_contents = ""
+    contents.each_line do |line|
+      if line.match(/#{match_string}/)
+        new_contents << "#{new_line}\n"
+      else
+        new_contents << line
+      end
+    end
+    file = File.open(file_path, "w")
+    file.write(new_contents)
+    file.close
   end
 end
 
