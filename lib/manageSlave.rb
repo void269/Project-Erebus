@@ -34,7 +34,7 @@ class ManageSlave
         # replacing in master file
         replace_line(slaveuuid.split(',')[0], slaveuuid, @master)
         # replacing in ansible inventory file
-        ansible_input = "#{slaveuuid.split(',')[1]} uuid=#{slaveuuid.split(',')[0]}"
+        ansible_input = "#{slaveuuid.split(',')[1].delete("\n")} uuid=#{slaveuuid.split(',')[0]}"
         replace_line(slaveuuid.split(',')[0], ansible_input, "/etc/erebus/inventory")
       end
     else ########################################################################################---> is new slave
