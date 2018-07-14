@@ -36,21 +36,21 @@
       file:
         path: /etc/erebus
         state: directory
-    - name: creating var/log/erebus directory
-      file:
-        path: /etc/erebus/logs
-        state: directory
     - name: Checking if logs symlink exists
       stat:
         path: /etc/erebus/logs
       register: link
-    - name: creating symlink
+    - name: creating /etc/erebus/logs directory
+      file:
+        path: /etc/erebus/logs
+        state: directory
+      when: link.stat.islnk is not defined
+    - name: creating symlink to /var/log/erebus
       file:
         src: /var/log/erebus
         dest: /etc/erebus/logs
         state: link
         force: true
-      when: link.stat.islnk is not defined
 
 - hosts: slave
   remote_user: root
