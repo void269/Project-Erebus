@@ -33,9 +33,11 @@ class ManageSlave
         @log.write(:info, "IP is different than whats in master file!")
         # replacing in master file
         replace_line(slaveuuid.split(',')[0], slaveuuid, @master)
+        @log.write(:info, "Updated Master file")
         # replacing in ansible inventory file
         ansible_input = "#{slaveuuid.split(',')[1].delete("\n")} uuid=#{slaveuuid.split(',')[0]}"
         replace_line(slaveuuid.split(',')[0], ansible_input, "/etc/erebus/inventory")
+        @log.write(:info, "Updated Ansible inventory file")
       end
     else ########################################################################################---> is new slave
       @log.write(:info, "Adding new slave #{ip}")

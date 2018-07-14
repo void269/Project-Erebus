@@ -11,6 +11,8 @@ class App_Logger
   end
 
   def write(log_level = "INFO", text = nil, app_name = "Erebus", log = @logfile)
+    text = text.delete("\n") if text.match("\n") != nil
+    text = text.delete("\r") if text.match("\r") != nil
     log_level = "WARN" if log_level.upcase == "WARNING"
     log_level = "OTHER" unless log_level.upcase == "INFO" ||
       log_level.upcase == "WARN" ||

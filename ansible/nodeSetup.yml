@@ -40,12 +40,17 @@
       file:
         path: /etc/erebus/logs
         state: directory
+    - name: Checking if logs symlink exists
+      stat:
+        path: /etc/erebus/logs
+      register: link
     - name: creating symlink
       file:
         src: /var/log/erebus
         dest: /etc/erebus/logs
         state: link
         force: true
+      when: link.stat.islnk is not defined
 
 - hosts: slave
   remote_user: root
